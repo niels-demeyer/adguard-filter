@@ -7,6 +7,10 @@ A custom filter list for **AdGuard** and **uBlock Origin** that:
 - Blocks Facebook trackers on third-party sites
 - Hides ads and annoyances on a handful of news, email, cricket and job sites
 
+> [!IMPORTANT]
+> **This list needs a browser extension (uBlock Origin or the AdGuard extension/app).**
+> Shorts hiding and the other YouTube rules don't work in **AdGuard Home** or any other DNS-level blocker. See [AdGuard Home](#adguard-home) below.
+
 ## Subscription URL
 
 ```
@@ -52,10 +56,23 @@ and confirm.
 
 ### AdGuard Home
 
-AdGuard Home is DNS-level only and **can't** apply cosmetic rules, so most of this list (including Shorts hiding) won't work there. Use the browser extension or app instead.
+**Adding this list to AdGuard Home won't hide Shorts.**
+
+AdGuard Home is a DNS server, so it can only allow or block whole domains. YouTube Shorts load from the same `youtube.com` as regular videos, so there's nothing for it to block. It also ignores:
+
+- **Element-hiding rules** (`##`, `:has()`, `:has-text()`), because it never sees the page. That's every YouTube rule in this list.
+- **Rules with a path**, like `||youtube.com/shorts/$document`, because DNS only sees the domain name.
+- **Browser-only modifiers** like `$third-party` and `$domain=`, which the Facebook rules use.
+
+So in practice **almost nothing in this list takes effect in AdGuard Home.**
+
+**What to do:** keep AdGuard Home for network-wide ad and tracker blocking, *and* install [uBlock Origin](#ublock-origin) or the [AdGuard browser extension](#adguard-browser-extension) with this list on every browser where you want Shorts gone. The two work together without conflict.
+
+**"I'm on AdGuard Home but still see Shorts"** is expected. Being connected to AdGuard Home doesn't change this; you need the extension.
 
 ## Notes
 
+- After adding or updating the list, force a refresh in your blocker (uBlock Origin: **Purge all caches** / **Update now**) and reload YouTube.
 - YouTube changes its page structure from time to time. If Shorts start showing up again, open an issue or update the selectors in `filter.txt`.
 - Clicking a Short from inside YouTube isn't blocked at the network level (YouTube navigates without a full page load), but Shorts links and entry points are hidden, so there's nothing to click.
 - The Outlook rules use auto-generated class names and may be outdated.
