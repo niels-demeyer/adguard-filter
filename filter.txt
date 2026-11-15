@@ -19,7 +19,10 @@ youtube.com##.annotation-type-text.annotation-popup-shape.annotation-shape:nth-o
 youtube.com##.annotation-type-text.annotation-popup-shape.annotation-shape:nth-of-type(7)
 youtube.com##.annotation-type-text.annotation-popup-shape.annotation-shape:nth-of-type(5)
 youtube.com##.branding-img-container
-/endscreen.js$script,domain=www.youtube.com
+! End-screen video wall: hidden cosmetically. (Blocking the player's endscreen.js
+! module instead can make the player stall or error while loading a video.)
+youtube.com##.html5-endscreen
+youtube.com##.ytp-endscreen-content
 m.youtube.com##ytm-item-section-renderer.scwnr-content:nth-of-type(1) > lazy-list > .item
 youtube.com###chat
 
@@ -29,14 +32,11 @@ www.youtube.com###live-chat-banner > .yt-live-chat-banner-manager.style-scope:ha
 ! Hide "Enhanced Bitrate" quality option in the settings gear sub-menu
 youtube.com##.ytp-quality-menu.ytp-panel > .ytp-panel-menu > div.ytp-menuitem:has-text(/Enhanced bitrate/i)
 
-! Hide Youtube Playables from the Youtube Home feed
-youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope:nth-of-type(1):has-text(/Playables/i)
-youtube.com##ytd-rich-section-renderer.yte-hide-shorts.ytd-rich-grid-renderer.style-scope:nth-of-type(2):has-text(/Playables/i)
-
 ! Generic sponsored content eliminator
 ~google.com##div.result[id*="sponsored"]
 
-! Remove main page Shorts block / shelves
+! Remove main page Shorts block / shelves (also covers the Playables shelf, so no
+! separate :has-text() rule is needed for it, which keeps YouTube from slowing down)
 www.youtube.com##ytd-rich-section-renderer.ytd-rich-grid-renderer.style-scope
 
 ! Remove sidebar footer

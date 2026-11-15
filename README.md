@@ -64,7 +64,7 @@ AdGuard Home is a DNS server, so it can only allow or block whole domains. YouTu
 - **Rules with a path**, like `||youtube.com/shorts/$document`, because DNS only sees the domain name.
 - **Browser-only modifiers** like `$third-party` and `$domain=`, which the Facebook rules use.
 
-So in practice **almost nothing in this list takes effect in AdGuard Home.**
+So in practice **almost nothing in this list takes effect in AdGuard Home.** That also means it's safe there: no rule in the list blocks a whole domain, so adding it to AdGuard Home can't stop YouTube, Google or any other site from loading.
 
 **What to do:** keep AdGuard Home for network-wide ad and tracker blocking, *and* install [uBlock Origin](#ublock-origin) or the [AdGuard browser extension](#adguard-browser-extension) with this list on every browser where you want Shorts gone. The two work together without conflict.
 
