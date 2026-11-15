@@ -56,12 +56,23 @@ youtube.com##grid-shelf-view-model:has(ytm-shorts-lockup-view-model-v2)
 youtube.com##ytm-shorts-lockup-view-model
 youtube.com##ytm-shorts-lockup-view-model-v2
 ! Individual Shorts mixed into feeds / search / related videos
-youtube.com##ytd-rich-item-renderer:has(a[href^="/shorts/"])
-youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])
-youtube.com##ytd-grid-video-renderer:has(a[href^="/shorts/"])
-youtube.com##ytd-compact-video-renderer:has(a[href^="/shorts/"])
-youtube.com##yt-lockup-view-model:has(a[href^="/shorts/"])
-youtube.com##ytd-notification-renderer:has(a[href^="/shorts/"])
+youtube.com##ytd-rich-item-renderer:has(a[href*="/shorts/"])
+youtube.com##ytd-video-renderer:has(a[href*="/shorts/"])
+youtube.com##ytd-grid-video-renderer:has(a[href*="/shorts/"])
+youtube.com##ytd-compact-video-renderer:has(a[href*="/shorts/"])
+youtube.com##yt-lockup-view-model:has(a[href*="/shorts/"])
+youtube.com##ytd-notification-renderer:has(a[href*="/shorts/"])
+! Subscriptions grid: Shorts items use slim media / SHORTS overlay / shorts lockup
+youtube.com##ytd-rich-item-renderer[is-slim-media]
+youtube.com##ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model-v2)
+youtube.com##ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model)
+youtube.com##ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])
+youtube.com##ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])
+youtube.com##ytd-grid-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"])
+! Shorts shelves without the is-shorts attribute (newer Subscriptions layout)
+youtube.com##ytd-rich-shelf-renderer:has(a[href*="/shorts/"])
+youtube.com##ytd-rich-section-renderer:has(a[href*="/shorts/"])
+youtube.com##ytd-shelf-renderer:has(a[href*="/shorts/"])
 ! "Shorts" entry in the left sidebar and mini sidebar
 youtube.com##ytd-guide-entry-renderer:has(a[title="Shorts"])
 youtube.com##ytd-mini-guide-entry-renderer[aria-label="Shorts"]
@@ -77,8 +88,8 @@ m.youtube.com##ytm-reel-shelf-renderer
 m.youtube.com##ytm-rich-section-renderer:has(ytm-reel-shelf-renderer)
 m.youtube.com##ytm-rich-section-renderer:has(ytm-shorts-lockup-view-model)
 m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
-m.youtube.com##ytm-video-with-context-renderer:has(a[href^="/shorts/"])
-m.youtube.com##ytm-rich-item-renderer:has(a[href^="/shorts/"])
+m.youtube.com##ytm-video-with-context-renderer:has(a[href*="/shorts/"])
+m.youtube.com##ytm-rich-item-renderer:has(a[href*="/shorts/"])
 
 ! Block opening Shorts pages directly (e.g. links opened in a new tab)
 ||youtube.com/shorts/$document
